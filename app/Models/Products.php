@@ -15,10 +15,11 @@ class Products extends Model
         'description',
         'stock',
         'price',
+        
     ];
 
     public function categories()
     {
-        return $this->BelongsToMany(Categories::class, 'categories_products', 'product_id', 'category_id')->withTimestamps();
+        return $this->belongsToMany(Categories::class, 'categories_products', 'product_id', 'category_id')->withTimestamps();
     }
 }

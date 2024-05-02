@@ -23,26 +23,30 @@ class ApiProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // Valider les données du formulaire
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'stock' => 'required|integer',
-            'price' => 'required|numeric',
-            'categories' => 'required|array',
-        ]);
+    /**
+ * Store a newly created resource in storage.
+ */
+public function store(Request $request)
+{
+    // Valider les données du formulaire
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'stock' => 'required|integer',
+        'price' => 'required|numeric',
+        'categories' => 'required|array',
+    ]);
 
-        // Créer un nouveau produit
-        $product = Products::create($validatedData);
+    // Créer un nouveau produit
+    $product = Products::create($validatedData);
 
-        // Attacher les catégories au produit
-        $product->categories()->attach($validatedData['categories']);
+    // Attacher les catégories sélectionnées au produit
+    $product->categories()->attach($validatedData['categories']);
 
-        // Retourner le produit créé au format JSON
-        return response()->json(['product' => $product], 201);
-    }
+    // Retourner le produit créé au format JSON avec les catégories associées
+    return response()->json(['product' => $product->load('categories')], 201);
+}
+
 
     /**
      * Display the specified resource.

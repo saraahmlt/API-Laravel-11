@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoriesRequest;
 use App\Http\Requests\UpdateCategoriesRequest;
 use App\Models\Categories;
-use Illuminate\Http\Request;
+use App\Models\Products;
 
 class CategoriesController extends Controller
 {
@@ -62,7 +62,7 @@ public function show($id)
     public function update(Request $request, $id)
     {
         // Trouver le produit avec l'ID donné
-        $category = Categories::find($id);
+        $category = Products::find($id);
         if (!$category) {
             return response()->json(['error' => 'Category not found'], 404);
         }
