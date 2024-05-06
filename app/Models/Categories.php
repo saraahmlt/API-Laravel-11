@@ -16,7 +16,7 @@ class Categories extends Model
 
     public function posts()
     {
-        return $this->BelongsToMany(Product::class, 'categories_products', 'product_id', 'category_id')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'categories_products', 'product_id', 'category_id')->withTimestamps();
     }
     
 }
