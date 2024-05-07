@@ -1,10 +1,10 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel API",
-        "description": "API Description",
+        "title": "API de gestion des catégories",
+        "description": "Documentation de l'API de gestion des catégories",
         "contact": {
-            "email": "benjamin.m@coqipt.fr"
+            "email": "sarah.mourlevat@gmail.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -13,304 +13,6 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/v1/categories": {
-            "get": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Get all categories",
-                "description": "Display a listing of the resource.",
-                "operationId": "12f5b2a2798f12d5859e8b0c21aa2ac8",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Categories"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Create a new category",
-                "description": "Store a newly created resource in storage.",
-                "operationId": "ceeca6bc93ae9aed51cdefaef01bd4ad",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "description"
-                                ],
-                                "properties": {
-                                    "title": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "name": "Category Title",
-                                    "description": "Category Description"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Resource created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Categories"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            }
-        },
-        "/api/v1/categories/{category}": {
-            "get": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Get a specific category",
-                "description": "Display the specified resource.",
-                "operationId": "d8b3ada3555c906e7cbebe6e760cc481",
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "path",
-                        "description": "ID of the category to retrieve",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Categories"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            }
-        },
-        "/api/v1/categories/{category}/edit": {
-            "put": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Update a specific category",
-                "description": "Update the specified resource in storage.",
-                "operationId": "71cfbcd19b88eac247539e12c140bebb",
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "path",
-                        "description": "ID of the category to update",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "description"
-                                ],
-                                "properties": {
-                                    "title": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "name": "Category Title",
-                                    "description": "Category Description"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Resource updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Categories"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            },
-        
-          
-            "delete": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Delete a specific category",
-                "description": "Remove the specified resource from storage.",
-                "operationId": "e7482847457a36d3b3103e6625e7fc74",
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "path",
-                        "description": "ID of the category to delete",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Resource deleted successfully"
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            }
-        },
-        
         "/api/v1/products": {
             "get": {
                 "tags": [
@@ -318,7 +20,7 @@
                 ],
                 "summary": "Get all products",
                 "description": "Display a listing of the resource.",
-                "operationId": "3625f36d08c1332af937546830e7b32b",
+                "operationId": "54ca80195310a25e51af8912a17cf3d1",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -362,7 +64,7 @@
                 ],
                 "summary": "Create a new product",
                 "description": "Store a newly created resource in storage.",
-                "operationId": "4212823185042015ede7f5f51e828122",
+                "operationId": "84771ac90926cf4f51cf3328d98084a9",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -372,7 +74,8 @@
                                     "name",
                                     "description",
                                     "price",
-                                    "stock"
+                                    "stock",
+                                    "categories"
                                 ],
                                 "properties": {
                                     "name": {
@@ -448,7 +151,7 @@
                 ],
                 "summary": "Get a specific product",
                 "description": "Display the specified resource.",
-                "operationId": "2fadb9eba38327028a1737520244e9cf",
+                "operationId": "1196773a65ac8616e64c34ae4f5e8218",
                 "parameters": [
                     {
                         "name": "product",
@@ -494,16 +197,14 @@
                         "sanctum": []
                     }
                 ]
-            }
-        },
-        "/api/v1/products/{product}/edit" : {
+            },
             "put": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Update a specific product",
                 "description": "Update the specified resource in storage.",
-                "operationId": "07e6bc89034eef3f656f7b79855b457c",
+                "operationId": "e67dc9715fd5d4aca7ea3ecbf574982a",
                 "parameters": [
                     {
                         "name": "product",
@@ -553,7 +254,6 @@
                                             "example": "1"
                                         }
                                     }
-                                   
                                 },
                                 "type": "object"
                             }
@@ -600,12 +300,300 @@
                 ],
                 "summary": "Delete a specific product",
                 "description": "Remove the specified resource from storage.",
-                "operationId": "216c52efb865ab13aedaef07998e76b8",
+                "operationId": "19de1f9e3f99b025e56208bf1e2f4047",
                 "parameters": [
                     {
                         "name": "product",
                         "in": "path",
                         "description": "ID of the product to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "description": "Display a listing of the resource.",
+                "operationId": "9e975d8e2b6733988615c39b97de2eec",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Categories"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Create a new category",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "4da23ce8c9c3bb5405e35ff6744e7992",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Category Title",
+                                    "description": "Category Description"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/categories/{category}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get a specific category",
+                "description": "Display the specified resource.",
+                "operationId": "22cf3be60141f016e98b9955b473e34d",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "ID of the category to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update a specific category",
+                "description": "Update the specified resource in storage.",
+                "operationId": "70524a6c87ff30f8007c00a79e881002",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "ID of the category to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Category Title",
+                                    "description": "Category Description"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Delete a specific category",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "71392c5a8bd761a10f4ced0310776da4",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "ID of the category to delete",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -648,7 +636,7 @@
                 ],
                 "summary": "Get all users",
                 "description": "Display a listing of User.",
-                "operationId": "7a244109427ed348eeaa71e6c7b03077",
+                "operationId": "cba27bd95cc6ea326d42054f312aeca8",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -692,7 +680,7 @@
                 ],
                 "summary": "Create a new user",
                 "description": "Store a newly created User in database.",
-                "operationId": "17155e35401c25d1bc5bec8e1937e108",
+                "operationId": "8a22df0af088eaa4f7476361d10d9061",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -772,7 +760,7 @@
                 ],
                 "summary": "Get a specific user",
                 "description": "Display the specified User.",
-                "operationId": "01c05c644495fbf5e53383c2080d618a",
+                "operationId": "c9cc7c97191977ef2b9dc13dcea15f9d",
                 "parameters": [
                     {
                         "name": "user",
@@ -825,7 +813,7 @@
                 ],
                 "summary": "Update a specific user",
                 "description": "Update the specified User from database.",
-                "operationId": "0e76ca7c7e66fe79291c2227a5ae0239",
+                "operationId": "0301197f7fe8c55b86c0acf78d016012",
                 "parameters": [
                     {
                         "name": "user",
@@ -934,7 +922,7 @@
                 ],
                 "summary": "Delete a specific user",
                 "description": "Remove the specified User from database.",
-                "operationId": "ab673c7087551d07f4efacbf999ba9dc",
+                "operationId": "d41c0d443f44f08d9246dcf73c8de5f9",
                 "parameters": [
                     {
                         "name": "user",
@@ -985,7 +973,7 @@
                 ],
                 "summary": "Login with email and password",
                 "description": "Login a User and return token.",
-                "operationId": "054a9091d5106d9504918a1673c67234",
+                "operationId": "f1b623d35d961c5cd1ba12945403415a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1075,7 +1063,7 @@
                 ],
                 "summary": "Register a new user",
                 "description": "Store a newly created User in database and return token.",
-                "operationId": "83bd8159f8a8c1f094dd0a874df4574f",
+                "operationId": "645cdae39269ff4f8443b57cc7053569",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1157,7 +1145,7 @@
         "schemas": {
             "Categories": {
                 "required": [
-                    "name",
+                    "title",
                     "description"
                 ],
                 "properties": {
@@ -1165,7 +1153,7 @@
                         "type": "integer",
                         "example": 123
                     },
-                    "name": {
+                    "title": {
                         "description": "The title of the category",
                         "type": "string"
                     },
